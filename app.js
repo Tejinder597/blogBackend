@@ -26,13 +26,13 @@ app.use(express.static('uploads'))
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/public', publicRouter)
 
-const PORT = process.env.APP_PORT || 3000
+const PORT = process.env.APP_PORT || 10000
 
 // Global error handler (optional, good practice for production)
 app.use((err, req, res, next) => {
   console.error(err.stack)
   res.status(500).json({
-    status: 'error',
+    status: 'error'
     message: err.message || 'Something went wrong!'
   })
 })
