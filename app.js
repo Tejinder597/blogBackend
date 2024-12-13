@@ -10,8 +10,15 @@ const app = express()
 
 connection()
 
+const corsOptions = {
+  origin: 'https://your-frontend-url.render.com', // Allow requests only from your React app domain
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed HTTP methods
+  credentials: true, // Allow cookies to be sent (useful for authentication)
+  optionsSuccessStatus: 200,
+};
+
 app.use(express.json())
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }))
 app.get('/', (req, res) => {
