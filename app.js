@@ -32,7 +32,7 @@ const PORT = process.env.APP_PORT || 10000
 app.use((err, req, res, next) => {
   console.error(err.stack)
   res.status(500).json({
-    status: 'error'
+    status: 'error',
     message: err.message || 'Something went wrong!'
   })
 })
