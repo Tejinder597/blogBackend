@@ -11,7 +11,7 @@ const app = express()
 connection()
 
 const corsOptions = {
-  origin: 'https://your-frontend-url.render.com', // Allow requests only from your React app domain
+  origin: 'https://blogfrontend-h2u2.onrender.com/', // Allow requests only from your React app domain
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed HTTP methods
   credentials: true, // Allow cookies to be sent (useful for authentication)
   optionsSuccessStatus: 200,
