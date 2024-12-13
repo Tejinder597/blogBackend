@@ -11,7 +11,7 @@ const app = express()
 connection()
 
 const corsOptions = {
-  origin: 'https://blogfrontend-h2u2.onrender.com/', // Allow requests only from your React app domain
+  origin: 'https://blogfrontend-h2u2.onrender.com', // Allow requests only from your React app domain
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed HTTP methods
   credentials: true, // Allow cookies to be sent (useful for authentication)
   optionsSuccessStatus: 200,
@@ -32,6 +32,8 @@ app.get('/', (req, res) => {
 app.use(express.static('uploads'))
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/public', publicRouter)
+
+app.options('*', cors(corsOptions));
 
 const PORT = process.env.APP_PORT || 9000
 
