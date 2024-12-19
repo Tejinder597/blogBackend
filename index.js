@@ -15,6 +15,13 @@ const corsOptions = {
   credentials: true,
 };
 
+// Custom CORS headers middleware
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", process.env.BASE_URL);
+  res.header("Access-Control-Allow-Credentials", true);
+  next();
+});
+
 app.use(express.json())
 app.use(cors(corsOptions))
 app.use(cookieParser())
