@@ -30,7 +30,7 @@
     "sequelize": "^6.37.3"
   },
   "engines": {
-    "node": "16.x"
+    "node": "22.x"
   },
   "devDependencies": {
     "sequelize-cli": "^6.6.2"
