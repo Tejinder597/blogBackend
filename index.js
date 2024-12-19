@@ -39,8 +39,8 @@ app.get('/', (req, res) => {
 
 // Static files and All Routes here
 app.use(express.static('uploads'))
-app.use('https://blogbackend-6295.onrender.com/api/v1/auth', authRouter)
-app.use('https://blogbackend-6295.onrender.com/api/v1/public', publicRouter)
+app.use('/api/v1/auth', authRouter)
+app.use('/api/v1/public', publicRouter)
 
 // Global error handler (optional, good practice for production)
 app.use((err, req, res, next) => {
