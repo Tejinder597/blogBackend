@@ -8,25 +8,28 @@ var cors = require('cors')
 
 const app = express()
 
+//Connect to db
 connection()
 
+// CORS Configuration
 const corsOptions = {
   origin: process.env.BASE_URL,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Add methods as needed
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
-// Custom CORS headers middleware
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", process.env.BASE_URL);
-  res.header("Access-Control-Allow-Credentials", true);
-  next();
-});
-
-app.use(express.json())
+// Middleware for CORS
 app.use(cors(corsOptions))
+
+// Ensure preflight OPTIONS requests are handled
+app.options('*', cors(corsOptions));
+
+//Body Parsers
+app.use(express.json())
 app.use(cookieParser())
-app.use(express.urlencoded({ extended: true }))
+
+// Test Route to verify the server
 app.get('/', (req, res) => {
   res.status(200).json({
     status: 'success',
@@ -34,12 +37,10 @@ app.get('/', (req, res) => {
   })
 })
 
-//  all routes here
+// Static files and All Routes here
 app.use(express.static('uploads'))
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/public', publicRouter)
-
-const PORT = process.env.APP_PORT || 9000
 
 // Global error handler (optional, good practice for production)
 app.use((err, req, res, next) => {
@@ -50,6 +51,7 @@ app.use((err, req, res, next) => {
   })
 })
 
+// Catch-all route for unmatched paths
 app.use('*', (req, res, next) => {
   res.status(404).json({
     status: 'failed',
@@ -57,6 +59,7 @@ app.use('*', (req, res, next) => {
   })
 })
 
-app.listen(process.env.APP_PORT, () => {
-  console.log('Server up and running on Port', PORT)
+// Start the server
+app.listen(process.env.APP_PORT || 9000, () => {
+  console.log(`Server up and running on Port ${process.env.APP_PORT}`)
 })
