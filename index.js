@@ -10,8 +10,13 @@ const app = express()
 
 connection()
 
+const corsOptions = {
+  origin: process.env.BASE_URL,
+  credentials: true,
+};
+
 app.use(express.json())
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }))
 app.get('/', (req, res) => {
