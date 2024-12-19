@@ -12,8 +12,7 @@ connection()
 
 const corsOptions = {
   origin: process.env.BASE_URL,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Add methods as needed
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'], // Adjust headers as needed
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Add methods as needed
   credentials: true,
 };
 
