@@ -15,13 +15,6 @@ connection()
 const corsOptions = {
   origin: process.env.BASE_URL,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: [
-    'Origin',
-    'Content-Type',
-    'Accept',
-    'Authorization',
-    'X-Request-With',
-  ],
 };
 
 // Middleware for CORS
