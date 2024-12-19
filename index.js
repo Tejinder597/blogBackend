@@ -13,7 +13,6 @@ connection()
 
 // CORS Configuration
 const corsOptions = {
-  origin: true,
   origin: process.env.BASE_URL,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
