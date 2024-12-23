@@ -3,9 +3,7 @@ require('dotenv').config({ path: `${process.cwd()}/.env` })
 const { Sequelize } = require('sequelize')
 
 const sequelize = new Sequelize(
-  process.env.DB_USERNAME,
-  process.env.DB_PASSWORD,
-  process.env.DB_NAME,
+  "postgresql://blogapi_ftoi_user:AYAPGxQwJCIaRyseFNMuMkEVFLX0OQbL@dpg-ctkom2jqf0us739kpt60-a.oregon-postgres.render.com/blogapi_ftoi",
   {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
