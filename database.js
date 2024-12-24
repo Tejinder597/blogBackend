@@ -5,8 +5,6 @@ const { Sequelize } = require('sequelize')
 const sequelize = new Sequelize(
   "postgresql://blogapi_ftoi_user:AYAPGxQwJCIaRyseFNMuMkEVFLX0OQbL@dpg-ctkom2jqf0us739kpt60-a.oregon-postgres.render.com/blogapi_ftoi",
   {
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
     dialect: 'postgres',
     dialectOptions: {
       ssl: {
